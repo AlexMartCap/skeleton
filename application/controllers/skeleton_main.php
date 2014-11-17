@@ -205,6 +205,17 @@ class skeleton_main extends CI_Controller {
 		return $header_data;
 	}
 	
+	public function location_2(){
+
+        $this->grocery_crud->set_table($this->location);
+
+        $output = $this->grocery_crud->render();
+
+        $this->_load_html_header($this)
+
+        $this->_load_
+	}
+
 	public function location()
     {
 		if (!$this->skeleton_auth->logged_in())
@@ -223,7 +234,7 @@ class skeleton_main extends CI_Controller {
 		
 		$this->current_table="location";
         $this->grocery_crud->set_table($this->current_table);
-        
+
         //ESTABLISH SUBJECT
         $this->grocery_crud->set_subject(lang('location_subject'));                
         

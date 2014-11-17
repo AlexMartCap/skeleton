@@ -80,7 +80,7 @@ if (defined('ENVIRONMENT') && ENVIRONMENT=="development") {
 
   </head>
 
-<body>
+<body class="login-layout">
 	
 <div class="container">	
 
@@ -98,18 +98,57 @@ if (defined('ENVIRONMENT') && ENVIRONMENT=="development") {
  </center>
 <?php endif; ?>
      
-     <center><h1><?php echo $login_appname . ". " . $login_entity;?></h1></center>
-     <br>
-       
+     <div class="main-container">
+      <div class="main-content">
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1">
+            <div class="login-container">
+              <div class="center">
+                <h1>
+                  <i class="icon-leaf green"></i>
+                    <?php echo $login_appname . ". " . $login_entity;?>   <!--Intranet. Institut de l'Ebre-->
+                </h1>
+                <h4 class="blue">&copy; Institut Ebre</h4>
+              </div>
+
+              <div class="space-6"></div>
+     <!--Formulari per entrar a Skeleton-->
+              
+              <div class="position-relative">
+                <div id="login-box" class="login-box visible widget-box no-border">
+                  <div class="widget-body">
+                    <div class="widget-main">
+                      
        <?php 
        echo form_open($login_url .$redirect, array('id' => 'loginform', 'class' => 'form-signin' )); ?>
         
-        <h3 class="form-signin-heading"><?php echo lang('login-form-greetings');?></h3>
+        <h4 class="header blue lighter bigger">
+          <i class="icon-coffee green"></i>
+            <?php echo lang('login-form-greetings');?>
+        </h4>
 
-         <input id="identity" class="input-block-level" type="text" placeholder="<?php echo lang('User');?>" name="identity">
-         <input id="password" class="input-block-level" type="password" placeholder="<?php echo lang('Password');?>" name="password">
+
+       <div class="space-6"></div>
+
+        <form>
+         <fieldset>
+          <label class="block clearfix">
+           <span class="block input-icon input-icon-right">     <!--Usuari-->
+            <input id="identity" class="input-block-level" type="text" placeholder="<?php echo lang('User');?>" name="identity">
+           <i class="icon-user"></i>
+          </span>
+        </label>
+
+        <label class="block clearfix">
+         <span class="block input-icon input-icon-right">       <!--Contrasenya-->
+            <input id="password" class="input-block-level" type="password" placeholder="<?php echo lang('Password');?>" name="password">
+            <i class="icon-lock"></i>
+         </span>
+        </label>
          
-         <select id="realms" class="selectpicker" name="realm">
+        <div class="space"></div>
+
+         <select id="realms" class="selectpicker" name="realm">       <!--Seleccionem obrir:LDAP, MYSQL, MANTENIMENT-->
   		  <?php foreach( (array) $realms as $realm): ?>
 		   <?php if( $realm == $default_realm): ?>
             <option value="<?php echo $realm; ?>" selected="selected"><?php echo $realm; ?></option>
@@ -126,18 +165,64 @@ if (defined('ENVIRONMENT') && ENVIRONMENT=="development") {
            <input type="checkbox" value="remember-me"> <?php echo lang('remember');?> 
          </label>
          -->
+        <div class="space"></div>
 
-        <br/>
-        <button class="btn btn-large btn-primary" type="submit"><?php echo lang('Login');?></button>
-       
+          <div class="clearfix">
+           <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+              <i class="icon-key"></i>
+               <?php echo lang('Login');?>
+           </button>
+        </div>
+       </fieldset>
+      </form>
+          <!--Fins aqui arriba el formulari-->
+
        <?php echo form_close(); ?>
        <!--<center><p><a href="<?php echo $register_url;?>"><?php echo lang('Register');?></a></p></center>-->
+       
        <center><p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p></center>
        <br/>
        
     	   <?php include("auth_footer.html"); ?>      
        
+          </div>
+         </div>
+        </div>
+      </div>
+     </div>
 </div>
+
+
+<!-- basic scripts -->
+
+    <!--[if !IE]> -->
+
+    <script type="text/javascript">
+      window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+    </script>
+
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+    <script type="text/javascript">
+      if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    </script>
+
+    <!-- inline scripts related to this page -->
+
+    <script type="text/javascript">
+      function show_box(id) {
+       jQuery('.widget-box.visible').removeClass('visible');
+       jQuery('#'+id).addClass('visible');
+      }
+    </script>
+
+
 
 </body>
 
