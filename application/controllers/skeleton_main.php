@@ -213,7 +213,7 @@ class skeleton_main extends CI_Controller {
 
         $this->_load_html_header($this)
 
-        $this->_load_
+        //$this->_load_
 	}
 
 	public function location()
